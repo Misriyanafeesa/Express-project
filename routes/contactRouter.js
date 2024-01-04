@@ -1,5 +1,13 @@
 const express = require('express')
 const router = express.Router()
+const { getContact,postContact,putContact,deleteContact } = require('../controllers/contactController')
+router.route('/').get(getContact)
+router.route('/').post(postContact)
+router.route('/:id').put(putContact)
+router.route('/:id').delete(deleteContact)
+
+
+
 // //GET
 // router.route('/').get((req,res)=>{
 //     res.status('200').json({"message":"getallcontact"})
@@ -11,20 +19,20 @@ const router = express.Router()
 // })
 
 //same routes can be chained
-router.route('/').get((req,res)=>{
-    res.status('200').json({"message":"getallcontact"})
-}).post((req,res)=>{
-    res.status('200').json({"message":`createcontact${req.body.name}`})
-})
+// router.route('/').get((req, res) => {
+//     res.status('200').json({ "message": "getallcontact" })
+// }).post((req, res) => {
+//     res.status('200').json({ "message": `createcontact${req.body.name}` })
+// })
 
-//DELETE
-router.route('/:id').delete((req,res)=>{
-    res.status('200').json({"message":`deleted ${req.params.id}`})
-})
+// //DELETE
+// router.route('/:id').delete((req, res) => {
+//     res.status('200').json({ "message": `deleted ${req.params.id}` })
+// })
 
-//PUT
-router.route('/:id').put((req,res)=>{
-    res.status('200').json({"message":`updated ${req.params.id}`})
-})
+// //PUT
+// router.route('/:id').put((req, res) => {
+//     res.status('200').json({ "message": `updated ${req.params.id}` })
+// })
 
-module.exports=router
+module.exports = router
